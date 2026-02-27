@@ -388,6 +388,13 @@ export function normalizeGoogleModelId(id: string): string {
   if (id === "gemini-3-flash") {
     return "gemini-3-flash-preview";
   }
+  // gemini-1.5-flash was deprecated; generativelanguage API no longer exposes it.
+  if (id === "gemini-1.5-flash" || id.startsWith("gemini-1.5-flash-")) {
+    return "gemini-2.5-flash";
+  }
+  if (id === "gemini-1.5-pro" || id.startsWith("gemini-1.5-pro-")) {
+    return "gemini-2.5-pro";
+  }
   return id;
 }
 
